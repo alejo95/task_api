@@ -1,0 +1,3 @@
+curl -i -H "Content-type: application/json" -X POST -d '{"title":"Nuevo titulo","description":"Nueva descripcion", "deadline":"2020-04-10"}' http://127.0.0.1:5000/api/v1/tasks
+
+curl -i -H "Content-type: application/json" -X POST -d '{"title":"cambio completo de titulo","description":"Nueva descripcion", "deadline":"2020-04-10"}' http://127.0.0.1:5000/api/v1/tasks/1
