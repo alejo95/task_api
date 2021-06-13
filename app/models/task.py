@@ -1,6 +1,7 @@
 from . import db
 
 from sqlalchemy.event import listen
+from sqlalchemy import desc, asc
 
 
 class Task(db.Model):
@@ -16,6 +17,11 @@ class Task(db.Model):
     @classmethod
     def new(cls, title, description, deadline):
         return Task(title=title, description=description, deadline=deadline)
+
+    @classmethod
+    def get_by_page(cls, order, page, per_page=10):
+        sort = desc(Task.id) if order == "desc" else asc(Task.id)  # order by task desc an asc
+        return Task.query.order_by(sort).paginate(page, per_page).items
 
     def save(self):
         try:
